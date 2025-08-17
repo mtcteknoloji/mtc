@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTC Teknoloji | Şifreleme Programı</title>
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            color: white;
+            background: #0d0d0d;
+            overflow-x: hidden;
+        }
+        /* Arka plan animasyonu */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0d0d0d, #001f33);
+            z-index: -1;
+        }
+        /* Üst Menü */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            width: 100%;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+        nav .logo {
+            display: flex;
+            align-items: center;
+        }
+        nav .logo img {
+            height: 45px;
+            margin-right: 10px;
+        }
+        nav .logo span {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #00d4ff;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+        }
+        nav ul {list-style: none; display: flex;}
+        nav ul li {margin-left: 20px;}
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: background 0.3s;
+        }
+        nav ul li a:hover {background: #00d4ff; color: black;}
+        /* Ana içerik */
+        main {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 120px;
+        }
+        main img {
+            width: 250px;
+            margin-bottom: 25px;
+        }
+        h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #00d4ff;
+            text-shadow: 0 0 25px rgba(0, 212, 255, 0.8);
+        }
+        .container {
+            background-color: rgba(0,0,0,0.6);
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+        }
+        label {
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background-color: #00d4ff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {background-color: #009ec0; color: white;}
+        #result {
+            margin-top: 15px;
+            font-size: 1.1em;
+            word-break: break-all;
+            background: rgba(0,0,0,0.4);
+            padding: 10px;
+            border-radius: 8px;
+        }
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            font-size: 0.9em;
+        }
+            /* Modal stil */
+    .modal {
+        display:none;
+        position:fixed; z-index:1000; left:0; top:0;
+        width:100%; height:100%;
+        background-color:rgba(0,0,0,0.7);
+    }
+    .modal-content {
+        background-color:rgba(0,0,0,0.9);
+        margin:10% auto; padding:20px; border:1px solid #00d4ff;
+        width:90%; max-width:500px;
+        border-radius:15px; text-align:center;
+        box-shadow:0 0 20px rgba(0,212,255,0.5);
+    }
+    .modal-content h3 {
+        margin-bottom:20px; color:#00d4ff; text-shadow:0 0 15px rgba(0,212,255,0.8);
+    }
+    .close {
+        color:#aaa; float:right; font-size:28px; font-weight:bold; cursor:pointer;
+    }
+    .close:hover {color:white;}
+    .modal-btn {
+        display:block; width:100%; padding:14px; margin:10px 0;
+        background:#00d4ff; color:black; font-weight:bold;
+        border-radius:12px; text-decoration:none; transition:0.3s;
+    }
+    .modal-btn:hover {background:#009ec0; color:white;}
+
+    /* Footer */
+    footer {text-align:center; padding:20px; background-color:rgba(0,0,0,0.5); font-size:0.9em;}
+</style>
+</head>
+<body>
+
+    </style>
+</head>
+<body>
+
+<!-- Arka plan animasyonu -->
+<div id="particles-js"></div>
+
+<!-- Menü -->
+<nav>
+    <div class="logo">
+        <img src="images/logo.png" alt="MTC Logo">
+        <span>MTC Teknoloji</span>
+    </div>
+    <ul>
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="#" id="openModal">Şifreleme Programı</a></li>
+        <li><a href="#">Projeler</a></li>
+        <li><a href="#">İletişim</a></li>
+    </ul>
+</nav>
+
+<!-- Ana içerik -->
+<!-- Modal -->
+<div id="programModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h3>Şifreleme Programı</h3>
+        <a class="modal-btn" href="mtc-sifre-uretici.exe.html" download>⬇️ EXE’yi İndir</a>
+    </div>
+</div>
+
+<main>
+    <img src="images/logo.png" alt="Logo">
+    <h2>Şifreleme Programı</h2>
+    <div class="container">
+        <label for="language">Dil / Language:</label>
+        <select id="language">
+            <option value="tr">Türkçe</option>
+            <option value="en">English</option>
+        </select>
+        <label id="masterLabel">Ana Şifre:</label>
+        <input type="password" id="master" placeholder="Ana şifre girin">
+        <label id="comboLabel">Kombinasyon:</label>
+        <input type="text" id="combo" placeholder="Kombinasyon girin">
+        <label id="lengthLabel">Karakter Sayısı:</label>
+        <input type="number" id="length" min="4" max="64" value="16">
+        <button onclick="generatePassword()" id="generateBtn">Şifre Üret</button>
+        <button onclick="copyPassword()">📋 Kopyala</button>
+        <div id="result"></div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer>
+    © 2025 MTC Teknoloji | Tüm Hakları Saklıdır.
+</footer>
+
+<!-- Particles.js -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+    particlesJS("particles-js", {
+        particles: {
+            number: { value: 80, density: { enable: true, value_area: 800 } },
+            color: { value: "#00d4ff" },
+            shape: { type: "circle" },
+            opacity: { value: 0.5 },
+            size: { value: 3, random: true },
+            line_linked: { enable: true, distance: 150, color: "#00d4ff", opacity: 0.4, width: 1 },
+            move: { enable: true, speed: 4, out_mode: "out" }
+        },
+        interactivity: {
+            events: {
+                onhover: { enable: true, mode: "grab" },
+                onclick: { enable: true, mode: "push" }
+            },
+            modes: {
+                grab: { distance: 200, line_linked: { opacity: 0.7 } },
+                push: { particles_nb: 4 }
+            }
+        },
+        retina_detect: true
+    });
+
+    // Çok dillilik
+    const translations = {
+        tr: {
+            masterLabel: "Ana Şifre:",
+            comboLabel: "Kombinasyon:",
+            lengthLabel: "Karakter Sayısı:",
+            generateBtn: "Şifre Üret"
+        },
+        en: {
+            masterLabel: "Master Password:",
+            comboLabel: "Combination:",
+            lengthLabel: "Number of Characters:",
+            generateBtn: "Generate Password"
+        }
+    };
+    document.getElementById("language").addEventListener("change", function(){
+        const lang = this.value;
+        document.getElementById("masterLabel").textContent = translations[lang].masterLabel;
+        document.getElementById("comboLabel").textContent = translations[lang].comboLabel;
+        document.getElementById("lengthLabel").textContent = translations[lang].lengthLabel;
+        document.getElementById("generateBtn").textContent = translations[lang].generateBtn;
+    });
+
+    // PBKDF2 ile şifre üretme
+    async function generatePassword(){
+        const master = document.getElementById("master").value;
+        const combo = document.getElementById("combo").value;
+        const length = parseInt(document.getElementById("length").value);
+        if(!master || !combo){
+            alert("Lütfen tüm alanları doldurun!");
+            return;
+        }
+        const encoder = new TextEncoder();
+        const keyMaterial = await crypto.subtle.importKey(
+            "raw",
+            encoder.encode(master),
+            {name: "PBKDF2"},
+            false,
+            ["deriveBits"]
+        );
+        const key = await crypto.subtle.deriveBits(
+            {
+                name: "PBKDF2",
+                salt: encoder.encode(combo),
+                iterations: 100000,
+                hash: "SHA-256"
+            },
+            keyMaterial,
+            length * 8
+        );
+        const byteArray = new Uint8Array(key);
+        const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}<>?/|";
+        let password = "";
+        for (let i = 0; i < byteArray.length; i++) {
+            password += charset[byteArray[i] % charset.length];
+        }
+        document.getElementById("result").textContent = password;
+    }
+
+    function copyPassword(){
+        const password = document.getElementById("result").textContent;
+        if(password){
+            navigator.clipboard.writeText(password);
+            alert("Şifre kopyalandı!");
+        }
+    }
+    // Modal aç/kapat
+const modal = document.getElementById("programModal");
+document.getElementById("openModal").onclick = () => modal.style.display = "block";
+document.getElementById("closeModal").onclick = () => modal.style.display = "none";
+window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; }
+</script>
+</body>
+</html>
