@@ -29,94 +29,47 @@
         backdrop-filter:blur(10px);
         z-index:10;
     }
-    nav .logo {
-        display:flex;
-        align-items:center;
-    }
-    nav .logo img {
-        height:45px;
-        margin-right:10px;
-    }
+    nav .logo {display:flex; align-items:center;}
+    nav .logo img {height:45px; margin-right:10px;}
     nav .logo span {
-        font-size:1.5em;
-        font-weight:bold;
-        color:#00d4ff;
-        text-shadow:0 0 20px rgba(0,212,255,0.8);
+        font-size:1.5em; font-weight:bold;
+        color:#00d4ff; text-shadow:0 0 20px rgba(0,212,255,0.8);
     }
-    nav ul {
-        list-style:none;
-        display:flex;
-    }
-    nav ul li {
-        margin-left:20px;
-    }
+    nav ul {list-style:none; display:flex; flex-wrap:wrap;}
+    nav ul li {margin-left:20px;}
     nav ul li a {
-        color:white;
-        text-decoration:none;
-        padding:8px 15px;
-        border-radius:20px;
-        transition:background 0.3s;
+        color:white; text-decoration:none; padding:8px 15px;
+        border-radius:20px; transition:background 0.3s;
     }
-    nav ul li a:hover {
-        background:#00d4ff;
-        color:black;
-    }
-    nav ul li a.active {
-        background:#00d4ff;
-        color:black;
-    }
+    nav ul li a:hover, nav ul li a.active {background:#00d4ff; color:black;}
+
     main {
-        min-height:100vh;
-        display:flex;
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
-        text-align:center;
-        padding-top:120px;
+        min-height:100vh; display:flex; flex-direction:column;
+        justify-content:center; align-items:center;
+        text-align:center; padding-top:120px;
     }
-    main img {
-        width:120px;
-        margin-bottom:15px;
-    }
+    main img {width:120px; max-width:50%; margin-bottom:15px;}
     h1 {
-        font-size:2.4em;
-        margin:6px 0;
-        color:#00d4ff;
-        text-shadow:0 0 25px rgba(0,212,255,0.8);
+        font-size:2.4em; margin:6px 0;
+        color:#00d4ff; text-shadow:0 0 25px rgba(0,212,255,0.8);
     }
     p {
-        max-width:800px;
-        opacity:0.9;
+        max-width:800px; opacity:0.9;
         margin:6px 20px 18px;
     }
     .btn {
-        display:inline-block;
-        padding:14px 22px;
-        border:none;
-        border-radius:12px;
-        font-weight:700;
-        cursor:pointer;
-        text-decoration:none;
-        background:#00d4ff;
-        color:black;
+        display:inline-block; padding:14px 22px;
+        border:none; border-radius:12px; font-weight:700;
+        cursor:pointer; text-decoration:none;
+        background:#00d4ff; color:black;
         transition:0.25s;
     }
-    .btn:hover {
-        background:#009ec0;
-        color:white;
-    }
-    footer {
-        text-align:center;
-        padding:20px;
-        background:rgba(0,0,0,0.5);
-        font-size:0.9em;
-    }
-                /* Modal stil */
+    .btn:hover {background:#009ec0; color:white;}
+
+    /* Modal */
     .modal {
-        display:none;
-        position:fixed; z-index:1000; left:0; top:0;
-        width:100%; height:100%;
-        background-color:rgba(0,0,0,0.7);
+        display:none; position:fixed; z-index:1000; left:0; top:0;
+        width:100%; height:100%; background-color:rgba(0,0,0,0.7);
     }
     .modal-content {
         background-color:rgba(0,0,0,0.9);
@@ -125,12 +78,8 @@
         border-radius:15px; text-align:center;
         box-shadow:0 0 20px rgba(0,212,255,0.5);
     }
-    .modal-content h3 {
-        margin-bottom:20px; color:#00d4ff; text-shadow:0 0 15px rgba(0,212,255,0.8);
-    }
-    .close {
-        color:#aaa; float:right; font-size:28px; font-weight:bold; cursor:pointer;
-    }
+    .modal-content h3 {margin-bottom:20px; color:#00d4ff; text-shadow:0 0 15px rgba(0,212,255,0.8);}
+    .close {color:#aaa; float:right; font-size:28px; font-weight:bold; cursor:pointer;}
     .close:hover {color:white;}
     .modal-btn {
         display:block; width:100%; padding:14px; margin:10px 0;
@@ -139,20 +88,34 @@
     }
     .modal-btn:hover {background:#009ec0; color:white;}
 
-    /* Footer */
-    footer {text-align:center; padding:20px; background-color:rgba(0,0,0,0.5); font-size:0.9em;}
+    footer {text-align:center; padding:20px; background:rgba(0,0,0,0.5); font-size:0.9em;}
+
+    /* Mobil uyumluluk */
+    @media (max-width: 768px) {
+        nav {flex-direction:column; align-items:flex-start; padding:10px 20px;}
+        nav ul {flex-direction:column; width:100%; margin-top:10px;}
+        nav ul li {margin:5px 0;}
+        h1 {font-size:2em;}
+        p {font-size:1em; padding:0 10px;}
+    }
+    @media (max-width: 480px) {
+        h1 {font-size:1.6em;}
+        nav .logo span {font-size:1.2em;}
+    }
 </style>
 </head>
 <body>
+
 <!-- Modal -->
 <div id="programModal" class="modal">
     <div class="modal-content">
         <span class="close" id="closeModal">&times;</span>
         <h3>Şifreleme Programı</h3>
         <a class="modal-btn" href="sifreleme.html">🔐 Web Üzerinde Kullan</a>
-        <a class="modal-btn" href="mtc-sifre-uretici.exe.html" download>⬇️ EXE’yi İndir</a>
+        <a class="modal-btn" href="downloads/mtc-sifre-uretici.exe" download>⬇️ EXE’yi İndir</a>
     </div>
 </div>
+
 <main>
     <img src="images/logo.png" alt="Logo">
     <h1>Şifre Üretici — Windows .exe</h1>
@@ -198,7 +161,6 @@ particlesJS("particles-js", {
     retina_detect:true
 });
 const modal = document.getElementById("programModal");
-document.getElementById("openModal").onclick = () => modal.style.display = "block";
 document.getElementById("closeModal").onclick = () => modal.style.display = "none";
 window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; }
 </script>
