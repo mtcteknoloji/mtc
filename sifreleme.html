@@ -12,159 +12,106 @@
             background: #0d0d0d;
             overflow-x: hidden;
         }
-        /* Arka plan animasyonu */
         #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
+            position: fixed; width: 100%; height: 100%;
             background: linear-gradient(135deg, #0d0d0d, #001f33);
             z-index: -1;
         }
-        /* Üst Menü */
+        /* Menü */
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 50px;
-            background: rgba(0, 0, 0, 0.5);
-            position: fixed;
-            width: 100%;
-            backdrop-filter: blur(10px);
-            z-index: 10;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 50px; background: rgba(0,0,0,0.5);
+            position: fixed; width: 100%; backdrop-filter: blur(10px); z-index: 10;
         }
-        nav .logo {
-            display: flex;
-            align-items: center;
-        }
-        nav .logo img {
-            height: 45px;
-            margin-right: 10px;
-        }
+        nav .logo {display: flex; align-items: center;}
+        nav .logo img {height: 45px; margin-right: 10px;}
         nav .logo span {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #00d4ff;
-            text-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+            font-size: 1.5em; font-weight: bold;
+            color: #00d4ff; text-shadow: 0 0 20px rgba(0,212,255,0.8);
         }
-        nav ul {list-style: none; display: flex;}
+        nav ul {list-style: none; display: flex; flex-wrap: wrap;}
         nav ul li {margin-left: 20px;}
         nav ul li a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 20px;
+            color: white; text-decoration: none;
+            padding: 8px 15px; border-radius: 20px;
             transition: background 0.3s;
         }
         nav ul li a:hover {background: #00d4ff; color: black;}
-        /* Ana içerik */
+
+        /* İçerik */
         main {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding-top: 120px;
+            min-height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center; padding-top: 120px;
         }
-        main img {
-            width: 250px;
-            margin-bottom: 25px;
-        }
+        main img {width: 250px; max-width: 70%; margin-bottom: 25px;}
         h2 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            color: #00d4ff;
-            text-shadow: 0 0 25px rgba(0, 212, 255, 0.8);
+            font-size: 3em; margin-bottom: 20px;
+            color: #00d4ff; text-shadow: 0 0 25px rgba(0,212,255,0.8);
         }
         .container {
             background-color: rgba(0,0,0,0.6);
-            padding: 20px;
-            border-radius: 15px;
-            max-width: 400px;
-            width: 100%;
-            box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+            padding: 20px; border-radius: 15px;
+            max-width: 400px; width: 100%;
+            box-shadow: 0 0 15px rgba(0,212,255,0.4);
         }
-        label {
-            display: block;
-            text-align: left;
-            margin-top: 10px;
-            font-weight: bold;
-        }
+        label {display: block; text-align: left; margin-top: 10px; font-weight: bold;}
         input, select {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border-radius: 8px;
-            border: none;
-            outline: none;
+            width: 100%; padding: 10px; margin-top: 5px;
+            border-radius: 8px; border: none; outline: none;
         }
         button {
-            width: 100%;
-            padding: 12px;
-            margin-top: 15px;
-            background-color: #00d4ff;
-            border: none;
-            border-radius: 8px;
-            font-size: 1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
+            width: 100%; padding: 12px; margin-top: 15px;
+            background-color: #00d4ff; border: none; border-radius: 8px;
+            font-size: 1em; font-weight: bold; cursor: pointer; transition: 0.3s;
         }
         button:hover {background-color: #009ec0; color: white;}
         #result {
-            margin-top: 15px;
-            font-size: 1.1em;
-            word-break: break-all;
-            background: rgba(0,0,0,0.4);
-            padding: 10px;
-            border-radius: 8px;
+            margin-top: 15px; font-size: 1.1em;
+            word-break: break-all; background: rgba(0,0,0,0.4);
+            padding: 10px; border-radius: 8px;
         }
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.5);
-            font-size: 0.9em;
+
+        /* Modal */
+        .modal {
+            display:none; position:fixed; z-index:1000; left:0; top:0;
+            width:100%; height:100%; background-color:rgba(0,0,0,0.7);
         }
-            /* Modal stil */
-    .modal {
-        display:none;
-        position:fixed; z-index:1000; left:0; top:0;
-        width:100%; height:100%;
-        background-color:rgba(0,0,0,0.7);
-    }
-    .modal-content {
-        background-color:rgba(0,0,0,0.9);
-        margin:10% auto; padding:20px; border:1px solid #00d4ff;
-        width:90%; max-width:500px;
-        border-radius:15px; text-align:center;
-        box-shadow:0 0 20px rgba(0,212,255,0.5);
-    }
-    .modal-content h3 {
-        margin-bottom:20px; color:#00d4ff; text-shadow:0 0 15px rgba(0,212,255,0.8);
-    }
-    .close {
-        color:#aaa; float:right; font-size:28px; font-weight:bold; cursor:pointer;
-    }
-    .close:hover {color:white;}
-    .modal-btn {
-        display:block; width:100%; padding:14px; margin:10px 0;
-        background:#00d4ff; color:black; font-weight:bold;
-        border-radius:12px; text-decoration:none; transition:0.3s;
-    }
-    .modal-btn:hover {background:#009ec0; color:white;}
+        .modal-content {
+            background-color:rgba(0,0,0,0.9);
+            margin:10% auto; padding:20px; border:1px solid #00d4ff;
+            width:90%; max-width:500px;
+            border-radius:15px; text-align:center;
+            box-shadow:0 0 20px rgba(0,212,255,0.5);
+        }
+        .modal-content h3 {margin-bottom:20px; color:#00d4ff; text-shadow:0 0 15px rgba(0,212,255,0.8);}
+        .close {color:#aaa; float:right; font-size:28px; font-weight:bold; cursor:pointer;}
+        .close:hover {color:white;}
+        .modal-btn {
+            display:block; width:100%; padding:14px; margin:10px 0;
+            background:#00d4ff; color:black; font-weight:bold;
+            border-radius:12px; text-decoration:none; transition:0.3s;
+        }
+        .modal-btn:hover {background:#009ec0; color:white;}
 
-    /* Footer */
-    footer {text-align:center; padding:20px; background-color:rgba(0,0,0,0.5); font-size:0.9em;}
-</style>
-</head>
-<body>
+        footer {text-align: center; padding: 20px; background: rgba(0,0,0,0.5); font-size: 0.9em;}
 
+        /* Mobil uyumluluk */
+        @media (max-width: 768px) {
+            nav {flex-direction: column; align-items: flex-start; padding: 10px 20px;}
+            nav ul {flex-direction: column; width: 100%; margin-top: 10px;}
+            nav ul li {margin: 5px 0;}
+            h2 {font-size: 2em;}
+            .container {max-width: 90%;}
+        }
+        @media (max-width: 480px) {
+            h2 {font-size: 1.6em;}
+            nav .logo span {font-size: 1.2em;}
+        }
     </style>
 </head>
 <body>
 
-<!-- Arka plan animasyonu -->
 <div id="particles-js"></div>
 
 <!-- Menü -->
@@ -181,13 +128,12 @@
     </ul>
 </nav>
 
-<!-- Ana içerik -->
 <!-- Modal -->
 <div id="programModal" class="modal">
     <div class="modal-content">
         <span class="close" id="closeModal">&times;</span>
         <h3>Şifreleme Programı</h3>
-        <a class="modal-btn" href="mtc-sifre-uretici.exe.html" download>⬇️ EXE’yi İndir</a>
+        <a class="modal-btn" href="downloads/mtc-sifre-uretici.exe" download>⬇️ EXE’yi İndir</a>
     </div>
 </div>
 
@@ -212,51 +158,27 @@
     </div>
 </main>
 
-<!-- Footer -->
 <footer>
     © 2025 MTC Teknoloji | Tüm Hakları Saklıdır.
 </footer>
 
-<!-- Particles.js -->
+<!-- Particles.js ve Script -->
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script>
     particlesJS("particles-js", {
-        particles: {
-            number: { value: 80, density: { enable: true, value_area: 800 } },
-            color: { value: "#00d4ff" },
-            shape: { type: "circle" },
-            opacity: { value: 0.5 },
-            size: { value: 3, random: true },
-            line_linked: { enable: true, distance: 150, color: "#00d4ff", opacity: 0.4, width: 1 },
-            move: { enable: true, speed: 4, out_mode: "out" }
-        },
-        interactivity: {
-            events: {
-                onhover: { enable: true, mode: "grab" },
-                onclick: { enable: true, mode: "push" }
-            },
-            modes: {
-                grab: { distance: 200, line_linked: { opacity: 0.7 } },
-                push: { particles_nb: 4 }
-            }
-        },
-        retina_detect: true
+        particles: {number:{value:80,density:{enable:true,value_area:800}},color:{value:"#00d4ff"},
+        shape:{type:"circle"},opacity:{value:0.5},size:{value:3,random:true},
+        line_linked:{enable:true,distance:150,color:"#00d4ff",opacity:0.4,width:1},
+        move:{enable:true,speed:4,out_mode:"out"}},
+        interactivity:{events:{onhover:{enable:true,mode:"grab"},onclick:{enable:true,mode:"push"}},
+        modes:{grab:{distance:200,line_linked:{opacity:0.7}},push:{particles_nb:4}}},
+        retina_detect:true
     });
 
-    // Çok dillilik
+    // Dil desteği
     const translations = {
-        tr: {
-            masterLabel: "Ana Şifre:",
-            comboLabel: "Kombinasyon:",
-            lengthLabel: "Karakter Sayısı:",
-            generateBtn: "Şifre Üret"
-        },
-        en: {
-            masterLabel: "Master Password:",
-            comboLabel: "Combination:",
-            lengthLabel: "Number of Characters:",
-            generateBtn: "Generate Password"
-        }
+        tr:{masterLabel:"Ana Şifre:",comboLabel:"Kombinasyon:",lengthLabel:"Karakter Sayısı:",generateBtn:"Şifre Üret"},
+        en:{masterLabel:"Master Password:",comboLabel:"Combination:",lengthLabel:"Number of Characters:",generateBtn:"Generate Password"}
     };
     document.getElementById("language").addEventListener("change", function(){
         const lang = this.value;
@@ -266,54 +188,30 @@
         document.getElementById("generateBtn").textContent = translations[lang].generateBtn;
     });
 
-    // PBKDF2 ile şifre üretme
+    // Şifre üretme
     async function generatePassword(){
-        const master = document.getElementById("master").value;
-        const combo = document.getElementById("combo").value;
-        const length = parseInt(document.getElementById("length").value);
-        if(!master || !combo){
-            alert("Lütfen tüm alanları doldurun!");
-            return;
-        }
-        const encoder = new TextEncoder();
-        const keyMaterial = await crypto.subtle.importKey(
-            "raw",
-            encoder.encode(master),
-            {name: "PBKDF2"},
-            false,
-            ["deriveBits"]
-        );
-        const key = await crypto.subtle.deriveBits(
-            {
-                name: "PBKDF2",
-                salt: encoder.encode(combo),
-                iterations: 100000,
-                hash: "SHA-256"
-            },
-            keyMaterial,
-            length * 8
-        );
-        const byteArray = new Uint8Array(key);
-        const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}<>?/|";
-        let password = "";
-        for (let i = 0; i < byteArray.length; i++) {
-            password += charset[byteArray[i] % charset.length];
-        }
-        document.getElementById("result").textContent = password;
+        const master=document.getElementById("master").value;
+        const combo=document.getElementById("combo").value;
+        const length=parseInt(document.getElementById("length").value);
+        if(!master||!combo){alert("Lütfen tüm alanları doldurun!"); return;}
+        const encoder=new TextEncoder();
+        const keyMaterial=await crypto.subtle.importKey("raw",encoder.encode(master),{name:"PBKDF2"},false,["deriveBits"]);
+        const key=await crypto.subtle.deriveBits({name:"PBKDF2",salt:encoder.encode(combo),iterations:100000,hash:"SHA-256"},keyMaterial,length*8);
+        const byteArray=new Uint8Array(key);
+        const charset="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}<>?/|";
+        let password=""; for(let i=0;i<byteArray.length;i++){password+=charset[byteArray[i]%charset.length];}
+        document.getElementById("result").textContent=password;
+    }
+    function copyPassword(){
+        const password=document.getElementById("result").textContent;
+        if(password){navigator.clipboard.writeText(password); alert("Şifre kopyalandı!");}
     }
 
-    function copyPassword(){
-        const password = document.getElementById("result").textContent;
-        if(password){
-            navigator.clipboard.writeText(password);
-            alert("Şifre kopyalandı!");
-        }
-    }
     // Modal aç/kapat
-const modal = document.getElementById("programModal");
-document.getElementById("openModal").onclick = () => modal.style.display = "block";
-document.getElementById("closeModal").onclick = () => modal.style.display = "none";
-window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; }
+    const modal=document.getElementById("programModal");
+    document.getElementById("openModal").onclick=()=>modal.style.display="block";
+    document.getElementById("closeModal").onclick=()=>modal.style.display="none";
+    window.onclick=(e)=>{if(e.target===modal) modal.style.display="none";}
 </script>
 </body>
 </html>
