@@ -17,7 +17,7 @@
     nav .logo {display:flex; align-items:center;}
     nav .logo img {height:45px; margin-right:10px;}
     nav .logo span {font-size:1.5em; font-weight:bold; color:#00d4ff; text-shadow:0 0 20px rgba(0,212,255,0.8);}
-    nav ul {list-style:none; display:flex;}
+    nav ul {list-style:none; display:flex; flex-wrap:wrap;}
     nav ul li {margin-left:20px;}
     nav ul li a {color:white; text-decoration:none; padding:8px 15px; border-radius:20px; transition:background 0.3s;}
     nav ul li a:hover {background:#00d4ff; color:black;}
@@ -25,7 +25,7 @@
     /* Ana başlık */
     header {min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
             text-align:center; padding:100px 20px 60px;}
-    header img {width:250px; margin-bottom:25px;}
+    header img {width:250px; max-width:70%; margin-bottom:25px;}
     header h2 {font-size:4em; margin-bottom:20px; color:#00d4ff; text-shadow:0 0 25px rgba(0,212,255,0.8);}
     header p {font-size:1.4em; max-width:700px; margin-bottom:40px; text-shadow:0 0 15px rgba(0,212,255,0.6);}
 
@@ -62,31 +62,84 @@
 
     /* Mobil uyumluluk */
     @media (max-width: 768px) {
-        nav {
-            flex-direction: column;
-            padding: 10px 20px;
-        }
-        nav ul {
-            flex-direction: column;
-            width: 100%;
-            margin-top: 10px;
-            text-align: center;
-        }
-        nav ul li {
-            margin: 10px 0;
-        }
-        header img {
-            width: 180px;
-        }
-        header h2 {
-            font-size: 2em;
-        }
-        header p {
-            font-size: 1em;
-            padding: 0 10px;
-        }
+        nav {flex-direction:column; align-items:flex-start; padding:10px 20px;}
+        nav ul {flex-direction:column; width:100%; margin-top:10px;}
+        nav ul li {margin:5px 0;}
+        header h2 {font-size:2.5em;}
+        header p {font-size:1.1em; padding:0 10px;}
+    }
+    @media (max-width: 480px) {
+        header h2 {font-size:2em;}
+        header p {font-size:1em;}
+        nav .logo span {font-size:1.2em;}
     }
 </style>
+</head>
+<body>
+
+<div id="particles-js"></div>
+
+<!-- Menü -->
+<nav>
+    <div class="logo">
+        <img src="images/logo.png" alt="MTC Logo">
+        <span>MTC Teknoloji</span>
+    </div>
+    <ul>
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="#" id="openModal">Şifreleme Programı</a></li>
+        <li><a href="#">Projeler</a></li>
+        <li><a href="#">İletişim</a></li>
+    </ul>
+</nav>
+
+<!-- Ana içerik -->
+<header>
+    <img src="images/logo.png" alt="MTC Logo">
+    <h2>Maximize Tech Creativity</h2>
+    <p>Yenilikçi yazılım çözümleri ve güçlü altyapı ile işinizi ileri taşıyoruz.</p>
+</header>
+
+<!-- Modal -->
+<div id="programModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h3>Şifreleme Programı</h3>
+        <a class="modal-btn" href="sifreleme.html">🔐 Web Üzerinde Kullan</a>
+        <a class="modal-btn" href="mtc-sifre-uretici.exe.html" download>⬇️ EXE’yi İndir</a>
+    </div>
+</div>
+
+<footer>
+    © 2025 MTC Teknoloji | Tüm Hakları Saklıdır.
+</footer>
+
+<!-- Particles.js -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+particlesJS("particles-js", {
+    particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#00d4ff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5 },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: "#00d4ff", opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 4, out_mode: "out" }
+    },
+    interactivity: {
+        events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" } },
+        modes: { grab: { distance: 200, line_linked: { opacity: 0.7 } }, push: { particles_nb: 4 } }
+    },
+    retina_detect: true
+});
+
+// Modal aç/kapat
+const modal = document.getElementById("programModal");
+document.getElementById("openModal").onclick = () => modal.style.display = "block";
+document.getElementById("closeModal").onclick = () => modal.style.display = "none";
+window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; }
+</script>
 
 </body>
 </html>
