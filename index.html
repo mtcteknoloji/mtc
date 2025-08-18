@@ -7,36 +7,8 @@
 <style>
     * {margin:0; padding:0; box-sizing:border-box;}
     body {font-family:'Segoe UI', sans-serif; color:white; background:#0d0d0d; overflow-x:hidden;}
-    ...
-    footer {text-align:center; padding:20px; background-color:rgba(0,0,0,0.5); font-size:0.9em;}
 
-    /* Mobil uyumluluk */
-    @media (max-width: 768px) {
-        nav {
-            flex-direction: column;
-            padding: 10px 20px;
-        }
-        nav ul {
-            flex-direction: column;
-            width: 100%;
-            margin-top: 10px;
-            text-align: center;
-        }
-        nav ul li {
-            margin: 10px 0;
-        }
-        header img {
-            width: 180px;
-        }
-        header h2 {
-            font-size: 2em;
-        }
-        header p {
-            font-size: 1em;
-            padding: 0 10px;
-        }
-    }
-</style>    /* Arka plan */
+    /* Arka plan */
     #particles-js {position:fixed; width:100%; height:100%; background:linear-gradient(135deg,#0d0d0d,#001f33); z-index:-1;}
 
     /* Menü */
@@ -87,73 +59,34 @@
 
     /* Footer */
     footer {text-align:center; padding:20px; background-color:rgba(0,0,0,0.5); font-size:0.9em;}
+
+    /* Mobil uyumluluk */
+    @media (max-width: 768px) {
+        nav {
+            flex-direction: column;
+            padding: 10px 20px;
+        }
+        nav ul {
+            flex-direction: column;
+            width: 100%;
+            margin-top: 10px;
+            text-align: center;
+        }
+        nav ul li {
+            margin: 10px 0;
+        }
+        header img {
+            width: 180px;
+        }
+        header h2 {
+            font-size: 2em;
+        }
+        header p {
+            font-size: 1em;
+            padding: 0 10px;
+        }
+    }
 </style>
-</head>
-<body>
-
-<div id="particles-js"></div>
-
-<!-- Menü -->
-<nav>
-    <div class="logo">
-        <img src="images/logo.png" alt="MTC Logo">
-        <span>MTC Teknoloji</span>
-    </div>
-    <ul>
-        <li><a href="index.html">Ana Sayfa</a></li>
-        <li><a href="#" id="openModal">Şifreleme Programı</a></li>
-        <li><a href="#">Projeler</a></li>
-        <li><a href="#">İletişim</a></li>
-    </ul>
-</nav>
-
-<!-- Ana içerik -->
-<header>
-    <img src="images/logo.png" alt="MTC Logo">
-    <h2>Maximize Tech Creativity</h2>
-    <p>Yenilikçi yazılım çözümleri ve güçlü altyapı ile işinizi ileri taşıyoruz.</p>
-</header>
-
-<!-- Modal -->
-<div id="programModal" class="modal">
-    <div class="modal-content">
-        <span class="close" id="closeModal">&times;</span>
-        <h3>Şifreleme Programı</h3>
-        <a class="modal-btn" href="sifreleme.html">🔐 Web Üzerinde Kullan</a>
-        <a class="modal-btn" href="mtc-sifre-uretici.exe.html" download>⬇️ EXE’yi İndir</a>
-    </div>
-</div>
-
-<footer>
-    © 2025 MTC Teknoloji | Tüm Hakları Saklıdır.
-</footer>
-
-<!-- Particles.js -->
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-<script>
-particlesJS("particles-js", {
-    particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: "#00d4ff" },
-        shape: { type: "circle" },
-        opacity: { value: 0.5 },
-        size: { value: 3, random: true },
-        line_linked: { enable: true, distance: 150, color: "#00d4ff", opacity: 0.4, width: 1 },
-        move: { enable: true, speed: 4, out_mode: "out" }
-    },
-    interactivity: {
-        events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" } },
-        modes: { grab: { distance: 200, line_linked: { opacity: 0.7 } }, push: { particles_nb: 4 } }
-    },
-    retina_detect: true
-});
-
-// Modal aç/kapat
-const modal = document.getElementById("programModal");
-document.getElementById("openModal").onclick = () => modal.style.display = "block";
-document.getElementById("closeModal").onclick = () => modal.style.display = "none";
-window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; }
-</script>
 
 </body>
 </html>
