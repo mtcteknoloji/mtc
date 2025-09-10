@@ -1,282 +1,169 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>MTC Teknoloji | Şifre Üretici (Web)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MTC Teknoloji | Şifre Üretici İndir (.exe)</title>
 <style>
-  :root{
-    --mtc-cyan:#00d4ff; --mtc-bg:#0d0d0d; --mtc-glass:rgba(0,0,0,.5);
-  }
-  *{box-sizing:border-box;margin:0}
-  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#0d0d0d;color:#fff;overflow-x:hidden}
-  #particles-js{position:fixed;inset:0;background:linear-gradient(135deg,#0d0d0d,#001f33);z-index:-1}
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {
+        font-family:'Segoe UI',sans-serif;
+        color:white;
+        background:#0d0d0d;
+        overflow-x:hidden;
+    }
+    #particles-js {
+        position:fixed;
+        inset:0;
+        background:linear-gradient(135deg,#0d0d0d,#001f33);
+        z-index:-1;
+    }
+    nav {
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:15px 50px;
+        background:rgba(0,0,0,0.5);
+        position:fixed;
+        width:100%;
+        backdrop-filter:blur(10px);
+        z-index:10;
+    }
+    nav .logo {display:flex; align-items:center;}
+    nav .logo img {height:45px; margin-right:10px;}
+    nav .logo span {
+        font-size:1.5em; font-weight:bold;
+        color:#00d4ff; text-shadow:0 0 20px rgba(0,212,255,0.8);
+    }
+    nav ul {list-style:none; display:flex; flex-wrap:wrap;}
+    nav ul li {margin-left:20px;}
+    nav ul li a {
+        color:white; text-decoration:none; padding:8px 15px;
+        border-radius:20px; transition:background 0.3s;
+    }
+    nav ul li a:hover, nav ul li a.active {background:#00d4ff; color:black;}
 
-  .wrap{max-width:980px;margin:110px auto 60px;padding:0 20px}
-  .card{background:rgba(0,0,0,.55);backdrop-filter:blur(10px);border:1px solid #0a2a35;border-radius:16px;padding:22px;box-shadow:0 0 25px rgba(0,212,255,.08)}
-  .title{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-  .title img{height:42px}
-  h1{font-size:1.9rem;color:var(--mtc-cyan);text-shadow:0 0 18px rgba(0,212,255,.7)}
-  p.lead{opacity:.9;margin-bottom:14px}
+    main {
+        min-height:100vh; display:flex; flex-direction:column;
+        justify-content:center; align-items:center;
+        text-align:center; padding-top:120px;
+    }
+    main img {width:120px; max-width:50%; margin-bottom:15px;}
+    h1 {
+        font-size:2.4em; margin:6px 0;
+        color:#00d4ff; text-shadow:0 0 25px rgba(0,212,255,0.8);
+    }
+    p {
+        max-width:800px; opacity:0.9;
+        margin:6px 20px 18px;
+    }
+    .btn {
+        display:inline-block; padding:14px 22px;
+        border:none; border-radius:12px; font-weight:700;
+        cursor:pointer; text-decoration:none;
+        background:#00d4ff; color:black;
+        transition:0.25s;
+    }
+    .btn:hover {background:#009ec0; color:white;}
 
-  label{display:block;font-weight:600;margin:10px 0 6px}
-  input[type="password"],input[type="text"],input[type="number"]{
-    width:100%;padding:12px 12px;border-radius:10px;border:1px solid #083142;background:#0b1b23;color:#fff;
-  }
-  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-  .btn{
-    background:var(--mtc-cyan);color:#061016;font-weight:800;border:none;border-radius:12px;
-    padding:12px 16px;cursor:pointer;transition:.25s;text-decoration:none;display:inline-flex;align-items:center;gap:8px
-  }
-  .btn.secondary{background:#0b1b23;color:#d9f8ff;border:1px solid #0a2a35}
-  .btn:hover{filter:brightness(.92);color:#fff}
-  .policy{opacity:.7;font-size:.9rem;margin-top:6px}
-  .muted{opacity:.8}
-  .flex{display:flex;align-items:center;gap:8px}
-  .tog{display:flex;align-items:center;gap:8px}
-  .panel{margin-top:10px;border:1px dashed #0a2a35;border-radius:12px;padding:12px;background:rgba(0,0,0,.35)}
-  .hide{display:none}
-  code{background:#08151b;border:1px solid #0a2a35;padding:2px 6px;border-radius:6px}
-  @media (max-width:768px){.row{grid-template-columns:1fr} h1{font-size:1.6rem}}
+    /* Modal */
+    .modal {
+        display:none; position:fixed; z-index:1000; left:0; top:0;
+        width:100%; height:100%; background-color:rgba(0,0,0,0.7);
+    }
+    .modal-content {
+        background-color:rgba(0,0,0,0.9);
+        margin:10% auto; padding:20px; border:1px solid #00d4ff;
+        width:90%; max-width:500px;
+        border-radius:15px; text-align:center;
+        box-shadow:0 0 20px rgba(0,212,255,0.5);
+    }
+    .modal-content h3 {margin-bottom:20px; color:#00d4ff; text-shadow:0 0 15px rgba(0,212,255,0.8);}
+    .close {color:#aaa; float:right; font-size:28px; font-weight:bold; cursor:pointer;}
+    .close:hover {color:white;}
+    .modal-btn {
+        display:block; width:100%; padding:14px; margin:10px 0;
+        background:#00d4ff; color:black; font-weight:bold;
+        border-radius:12px; text-decoration:none; transition:0.3s;
+    }
+    .modal-btn:hover {background:#009ec0; color:white;}
+
+    footer {text-align:center; padding:20px; background:rgba(0,0,0,0.5); font-size:0.9em;}
+
+    /* Mobil uyumluluk */
+    @media (max-width: 768px) {
+        nav {flex-direction:column; align-items:flex-start; padding:10px 20px;}
+        nav ul {flex-direction:column; width:100%; margin-top:10px;}
+        nav ul li {margin:5px 0;}
+        h1 {font-size:2em;}
+        p {font-size:1em; padding:0 10px;}
+    }
+    @media (max-width: 480px) {
+        h1 {font-size:1.6em;}
+        nav .logo span {font-size:1.2em;}
+    }
 </style>
 </head>
 <body>
 
-<nav style="position:fixed;inset:0 auto auto 0;width:100%;z-index:10;background:rgba(0,0,0,.5);backdrop-filter:blur(10px);border-bottom:1px solid #0a2a35">
-  <div style="max-width:1100px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between">
-    <div class="flex">
-      <img src="images/logo.png" alt="MTC" style="height:40px">
-      <b style="color:var(--mtc-cyan);text-shadow:0 0 14px rgba(0,212,255,.7)">MTC Teknoloji</b>
+<!-- Modal -->
+<div id="programModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h3>Şifreleme Programı</h3>
+        <a class="modal-btn" href="sifreleme.html">🔐 Web Üzerinde Kullan</a>
+        <a class="modal-btn" href="downloads/mtc-sifre-uretici.exe" download>⬇️ EXE’yi İndir</a>
     </div>
-    <div class="flex" style="gap:8px;flex-wrap:wrap">
-      <a href="index.html" class="btn secondary">Ana Sayfa</a>
-      <a href="indir.html" class="btn secondary">İndir</a>
-    </div>
-  </div>
-</nav>
-
-<div class="wrap">
-  <div class="card">
-    <div class="title">
-      <img src="images/logo.png" alt="Logo">
-      <h1>🔐 Şifre Üretici (Web)</h1>
-    </div>
-    <p class="lead">Ana şifre + kombinasyon ile <b>PBKDF2-HMAC-SHA-256</b> kullanarak deterministik, güçlü şifre üretir. Aynı <i>master+combo+ayar+uzunluk</i> → aynı sonuç.</p>
-
-    <div class="row">
-      <div>
-        <label for="master">Ana Şifre</label>
-        <div class="flex">
-          <input id="master" type="password" placeholder="Ana şifren" autocomplete="off">
-          <button class="btn secondary" id="toggleMaster" title="Göster/Gizle">👁️</button>
-        </div>
-      </div>
-      <div>
-        <label for="combo">Kombinasyon</label>
-        <input id="combo" type="text" placeholder="ör. site adı / hesap / e-posta" autocomplete="off">
-      </div>
-    </div>
-
-    <button id="btnFeatures" class="btn secondary" style="margin-top:12px">▶ Özellik Belirle</button>
-    <div id="features" class="panel hide">
-      <div class="row">
-        <label class="tog"><input id="useLower" type="checkbox" checked> a-z (küçük harfler)</label>
-        <label class="tog"><input id="useUpper" type="checkbox" checked> A-Z (BÜYÜK harfler)</label>
-        <label class="tog"><input id="useDigit" type="checkbox" checked> 0-9 (rakamlar)</label>
-        <label class="tog"><input id="useSymbol" type="checkbox" checked> !@# (özel karakterler)</label>
-      </div>
-      <label class="tog" style="margin-top:6px"><input id="noAmb" type="checkbox"> Benzerleri çıkar (0/O, l/1, I/| vb.)</label>
-      <button id="charsetInfo" class="btn secondary" style="margin-top:8px">ℹ️ Karakter Seti Açıklaması</button>
-    </div>
-
-    <div class="row" style="margin-top:10px">
-      <div>
-        <label for="len">Karakter Sayısı</label>
-        <input id="len" type="number" min="6" max="64" value="16">
-      </div>
-      <div>
-        <label for="result">Üretilen Şifre</label>
-        <input id="result" type="text" readonly placeholder="Önce üret 👇">
-        <div class="policy" id="policyTag"></div>
-      </div>
-    </div>
-
-    <div class="actions">
-      <button class="btn" id="btnGen">Şifre Üret</button>
-      <button class="btn secondary" id="btnCopy">Kopyala</button>
-      <button class="btn secondary" id="btnInfo">ℹ️ Bilgi</button>
-    </div>
-
-    <p class="muted" style="margin-top:10px">Veriler tarayıcıyı terk etmez; tüm işlemler cihazında yapılır.</p>
-  </div>
 </div>
 
+<main>
+    <img src="images/logo.png" alt="Logo">
+    <h1>Şifre Üretici — Windows .exe</h1>
+    <p>Masaüstü için hızlı ve güvenli şifre üretimi. PBKDF2-HMAC-SHA256 ile tamamen çevrimdışı çalışır.</p>
+    <a class="btn" href="downloads/mtc-sifre-uretici.exe" download>⬇️ EXE’yi İndir</a>
+</main>
+
 <div id="particles-js"></div>
+
+<nav>
+    <div class="logo">
+        <img src="images/logo.png" alt="MTC Logo">
+        <span>MTC Teknoloji</span>
+    </div>
+    <ul>
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="sifreleme.html">Şifreleme Programı</a></li>
+        <li><a href="indir.html" class="active">İndir</a></li>
+        <li><a href="#">İletişim</a></li>
+    </ul>
+</nav>
+
+<footer>
+    © 2025 MTC Teknoloji | Tüm Hakları Saklıdır.
+</footer>
+
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script>
-  // Arkaplan parçacıkları (senin temayla aynı)
-  particlesJS("particles-js", {
-    particles:{number:{value:80,density:{enable:true,value_area:800}},color:{value:"#00d4ff"},
-    shape:{type:"circle"},opacity:{value:0.5},size:{value:3,random:true},
-    line_linked:{enable:true,distance:150,color:"#00d4ff",opacity:0.4,width:1},
-    move:{enable:true,speed:4,out_mode:"out"}},
-    interactivity:{events:{onhover:{enable:true,mode:"grab"},onclick:{enable:true,mode:"push"}},
-    modes:{grab:{distance:200,line_linked:{opacity:0.7}},push:{particles_nb:4}}},retina_detect:true
-  });
+particlesJS("particles-js", {
+    particles:{
+        number:{value:80,density:{enable:true,value_area:800}},
+        color:{value:"#00d4ff"},
+        shape:{type:"circle"},
+        opacity:{value:0.5},
+        size:{value:3,random:true},
+        line_linked:{enable:true,distance:150,color:"#00d4ff",opacity:0.4,width:1},
+        move:{enable:true,speed:4,out_mode:"out"}
+    },
+    interactivity:{
+        events:{onhover:{enable:true,mode:"grab"},onclick:{enable:true,mode:"push"}},
+        modes:{grab:{distance:200,line_linked:{opacity:0.7}},push:{particles_nb:4}}
+    },
+    retina_detect:true
+});
+const modal = document.getElementById("programModal");
+document.getElementById("closeModal").onclick = () => modal.style.display = "none";
+window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; }
 </script>
 
-<script type="module">
-/* ====== Parametreler & Karakter Setleri ====== */
-const POLICY_VERSION = 1;
-const PBKDF2_ITER   = 100_000;
-const LOWER  = "abcdefghijklmnopqrstuvwxyz";
-const UPPER  = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const DIGIT  = "0123456789";
-const SYMBOL = "!@#$%^&*()-_=+[]{}<>?/|";
-const AMBIGUOUS = new Set("Il1O0|`'\" ");
-
-const els = {
-  master: q("#master"), combo: q("#combo"), len: q("#len"),
-  result: q("#result"), policy: q("#policyTag"),
-  gen: q("#btnGen"), copy: q("#btnCopy"), info: q("#btnInfo"),
-  featuresBtn: q("#btnFeatures"), features: q("#features"), charsetInfo: q("#charsetInfo"),
-  useLower: q("#useLower"), useUpper: q("#useUpper"), useDigit: q("#useDigit"),
-  useSymbol: q("#useSymbol"), noAmb: q("#noAmb"), toggleMaster: q("#toggleMaster")
-};
-
-function q(s,root=document){return root.querySelector(s)}
-
-/* ====== Yardımcılar ====== */
-const enc = new TextEncoder();
-const dec = new TextDecoder();
-
-function normalizeCombo(s){
-  return s.trim().toLowerCase().normalize("NFKC");
-}
-
-async function sha256Hex(bytes){
-  const h = await crypto.subtle.digest("SHA-256", bytes);
-  return [...new Uint8Array(h)].map(b=>b.toString(16).padStart(2,"0")).join("");
-}
-
-async function pbkdf2(master, saltBytes, dkLen=64){
-  const key = await crypto.subtle.importKey(
-    "raw", enc.encode(master),
-    {name:"PBKDF2"}, false, ["deriveBits"]
-  );
-  const bits = await crypto.subtle.deriveBits(
-    {name:"PBKDF2", hash:"SHA-256", iterations:PBKDF2_ITER, salt:saltBytes},
-    key, dkLen*8
-  );
-  return new Uint8Array(bits);
-}
-
-function buildAlphabet(policy){
-  let pools = [];
-  if (policy.use_lower)  pools.push(LOWER);
-  if (policy.use_upper)  pools.push(UPPER);
-  if (policy.use_digit)  pools.push(DIGIT);
-  if (policy.use_symbol) pools.push(SYMBOL);
-  if (!pools.length) pools = [LOWER, UPPER, DIGIT];
-  let alphabet = pools.join("");
-  if (policy.exclude_ambiguous){
-    alphabet = [...alphabet].filter(ch=>!AMBIGUOUS.has(ch)).join("");
-  }
-  if (!alphabet) alphabet = LOWER+UPPER+DIGIT;
-  return alphabet;
-}
-
-async function policyFingerprint(len, policy){
-  const blob = enc.encode(JSON.stringify({
-    v:POLICY_VERSION, iter:PBKDF2_ITER, len:Number(len), ...policy
-  }, Object.keys(policy).sort()));
-  const hex = await sha256Hex(blob);
-  return hex.slice(0,8);
-}
-
-/* ====== Ana Fonksiyon ====== */
-async function derivePassword(master, combo, length, policy){
-  length = Math.max(6, Math.min(64, Number(length)));
-  const salt = enc.encode(normalizeCombo(combo));
-  const dkLen = Math.max(length+16, 64);
-  const dk = await pbkdf2(master, salt, dkLen);
-
-  const alphabet = buildAlphabet(policy);
-  const chars = Array.from({length}, (_,i)=> alphabet[ dk[i] % alphabet.length ]);
-
-  // sınıf garantileri
-  function ensureOne(fromSet, seedIdx){
-    if (!fromSet) return;
-    if (chars.some(c=>fromSet.includes(c))) return;
-    const pos = dk[(length + seedIdx) % dk.length] % length;
-    const repl = fromSet[ dk[(length + seedIdx + 7) % dk.length] % fromSet.length ];
-    chars[pos] = repl;
-  }
-  ensureOne(policy.use_lower?LOWER:"",0);
-  ensureOne(policy.use_upper?UPPER:"",1);
-  ensureOne(policy.use_digit?DIGIT:"",2);
-  ensureOne(policy.use_symbol?SYMBOL:"",3);
-
-  return chars.join("");
-}
-
-/* ====== UI Davranışları ====== */
-els.featuresBtn.addEventListener("click", ()=>{
-  const open = els.features.classList.toggle("hide");
-  els.featuresBtn.textContent = (els.features.classList.contains("hide")? "▶":"▼") + " Özellik Belirle";
-});
-els.charsetInfo.addEventListener("click", ()=>alert(
-  "a-z (küçük harfler) → abc...\n"+
-  "A-Z (BÜYÜK harfler) → ABC...\n"+
-  "0-9 (rakamlar) → 0123456789\n"+
-  "!@# (özel karakterler) → !@#$%^&*()-_=+[]{}<>?/|\n"+
-  "Benzerleri çıkar → 0/O, l/1, I/| gibi karışabilecek karakterleri kaldırır."
-));
-els.toggleMaster.addEventListener("click", ()=>{
-  els.master.type = (els.master.type === "password" ? "text" : "password");
-});
-
-async function generate(){
-  const master = els.master.value;
-  const combo  = els.combo.value;
-  const length = els.len.value;
-  if (!master || !combo){ alert("Lütfen hem ana şifreyi hem kombinasyonu girin."); return; }
-
-  const policy = {
-    use_lower: els.useLower.checked,
-    use_upper: els.useUpper.checked,
-    use_digit: els.useDigit.checked,
-    use_symbol: els.useSymbol.checked,
-    exclude_ambiguous: els.noAmb.checked
-  };
-  const pwd = await derivePassword(master, combo, length, policy);
-  els.result.value = pwd;
-  els.policy.textContent = `Policy #${await policyFingerprint(length, policy)} • v${POLICY_VERSION}`;
-}
-els.gen.addEventListener("click", generate);
-window.addEventListener("keydown", e=>{ if(e.key==="Enter") generate(); });
-
-function clearClipboard(){ navigator.clipboard?.writeText?.("") }
-els.copy.addEventListener("click", async ()=>{
-  if (!els.result.value) return;
-  try{
-    await navigator.clipboard.writeText(els.result.value);
-    alert("Şifre panoya kopyalandı. 30 sn sonra pano temizlenecek.");
-    setTimeout(clearClipboard, 30_000);
-  }catch{
-    // Yedek: input select + kopyala
-    els.result.select(); document.execCommand("copy");
-    alert("Şifre panoya kopyalandı. 30 sn sonra pano temizlenecek.");
-    setTimeout(clearClipboard, 30_000);
-  }
-});
-els.info.addEventListener("click", ()=>alert(
-  "Bu program, ana şifre + kombinasyon girerek güvenli bir şifre üretir.\n"+
-  "Şifreler PBKDF2-HMAC-SHA-256 ile türetilir.\n"+
-  "Aynı master+combo+ayar+uzunluk ile her zaman aynı sonuç üretilir."
-));
-</script>
 </body>
 </html>
